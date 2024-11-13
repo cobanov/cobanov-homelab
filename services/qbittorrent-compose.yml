@@ -1,0 +1,15 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - WEBUI_PORT=8081
+    volumes:
+      - D:/00_DATA/qbittorrent:/config
+      - D:/00_DOWNLOADS:/downloads
+    ports:
+      - 8081:8081  # qBittorrent is accessible on http://localhost:8081
+    restart: unless-stopped
